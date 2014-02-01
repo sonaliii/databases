@@ -1,34 +1,3 @@
--- CREATE DATABASE chatterBox;
-
--- USE chatterBox;
-
--- CREATE TABLE messages (
---  /* Describe your table here.*/
---  messageId int auto_increment primary key,
---  message varchar(255),
---  userId int,
---  roomId int,
---  FOREIGN KEY (userId) REFERENCES users(userId),
---  FOREIGN KEY (roomId) REFERENCES rooms(roomId)
--- );
-
--- CREATE TABLE users {
---   userId int auto_increment primary key,
---   username varchar(50)
--- }
-
--- CREATE TABLE rooms {
---   roomId int auto_increment primary key,
---   roomname varchar(50)
--- }
-
-/*mysql -u root < documents/juanmarinbear/2014-01-databases/SQL/schema.sql
-/* You can also create more tables, if you need them... */
-
-/*  Execute this file from the command line by typing:
- *    mysql < schema.sql
- *  to create the database and the tables.*/
-
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
@@ -136,20 +105,20 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `chatterBox`.`relationships` ;
 
 CREATE TABLE IF NOT EXISTS `chatterBox`.`relationships` (
-  `verb` INT NOT NULL,
-  `verbBy` INT NOT NULL,
+  `userId` INT NOT NULL,
+  `userById` INT NOT NULL,
   `relationship` VARCHAR(45) NULL,
   `createdAt` TIMESTAMP NULL,
   `updatedAt` TIMESTAMP NULL,
-  PRIMARY KEY (`verb`, `verbBy`),
-  INDEX `fk_favorites_users2_idx` (`verbBy` ASC),
+  PRIMARY KEY (`userId`, `userById`),
+  INDEX `fk_favorites_users2_idx` (`userById` ASC),
   CONSTRAINT `fk_favorites_users1`
-    FOREIGN KEY (`verb`)
+    FOREIGN KEY (`userId`)
     REFERENCES `chatterBox`.`users` (`userId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_favorites_users2`
-    FOREIGN KEY (`verbBy`)
+    FOREIGN KEY (`userById`)
     REFERENCES `chatterBox`.`users` (`userId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
