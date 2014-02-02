@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>chatterbox</title>
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <!-- external javascript -->
+    <script src="bower_components/jquery/jquery.min.js"></script>
+    <script src="bower_components/underscore/underscore-min.js"></script>
+
+    <!-- internal javascript -->
+    <script src="scripts/app.js"></script>
+  </head>
+  <body>
+
+    <div id="main">
+      <h1>Chat-Client</h1>
+      <div id="console">
+        <form id="username" action="" method="post">
+          <label for="GET-name">Name:</label>
+          <input id="GET-name" type="text" name="name">
+          <input type="submit" value="Save">
+        </form>
+        <form id="message" action="" method="post">
+          <label for="GET-message">Message:</label>
+          <textarea id="GET-message" type="text" name="text"></textarea>
+          <input type="submit" value="Send">
+        </form>
+        <form id="room" action="" method="post">
+          <label for="GET-room">Room:</label>
+          <input id="GET-room" type="text" name="room"></textarea>
+          <input type="submit" value="Create">
+        </form>
+        <form id="selectRoom" action="" method="post">
+          <label for="SELECT-room">Room:</label>
+          <select id="SELECT-room" name="room">
+          </select>
+        </form>
+      </div>
+      <div>
+        <ul id="messages"></ul>
+      </div>
+    </div>
+  </body>
+</html>
